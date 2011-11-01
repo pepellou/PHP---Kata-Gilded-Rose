@@ -17,7 +17,7 @@ class GildedRose {
 			} else {
 				if ($items[$i]->getQuality() < 50) {
 					$items[$i]->setQuality($items[$i]->getQuality() + 1);
-					if ("Backstage passes to a TAFKAL80ETC concert" != $items[$i]->getName()) {
+					if ("Backstage passes to a TAFKAL80ETC concert" == $items[$i]->getName()) {
 						if ($items[$i]->getSellIn() < 11) {
 							if ($items[$i]->getQuality() < 50) {
 								$items[$i]->setQuality($items[$i]->getQuality() + 1);

@@ -68,13 +68,13 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase {
 	public static function backstage_rules(
 	) {
 		return array(
-			"incrementa en uno si sellIn > 10" => array(11, 1),
-			"incrementa en dos si 5 < sellIn <= 10 (a)" => array(10, 2),
-			"incrementa en dos si 5 < sellIn <= 10 (b)" => array(6, 2),
-			"incrementa en tres si 0 < sellIn <= 5 (a)" => array(5, 3),
-			"incrementa en tres si 0 < sellIn <= 5 (b)" => array(1, 3),
-			"nulo si sellIn <= 0 (a)" => array(0, null),
-			"nulo si sellIn <= 0 (b)" => array(-2, null)
+			"incr. 1 si sellIn > 10"            => array(11, 10, 11),
+			"incr. 2 si 5 < sellIn <= 10 (max)" => array(10, 10, 12),
+			"incr. 2 si 5 < sellIn <= 10 (min)" => array(6,  10, 12),
+			"incr. 3 si 0 < sellIn <= 5 (max)"  => array(5,  10, 13),
+			"incr. 3 si 0 < sellIn <= 5 (min)"  => array(1,  10, 13),
+			"se pone a 0 si sellIn <= 0 (max)"  => array(0,  10, 0),
+			"se pone a 0 si sellIn <= 0 (...)"  => array(-1, 10, 0)
 		);
 	}
 
@@ -83,19 +83,16 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function test_backstage_passes_incrementan_calidad_cada_vez_mas(
 		$sellIn, 
-		$increment
+		$quality,
+		$expected
 	) {
-		$quality = 10;
 		$pass = ItemBuilder::newItem()
 			->withName("Backstage passes to a TAFKAL80ETC concert")
 			->withSellIn($sellIn)
 			->withQuality($quality)
 			->build();
 		GildedRose::updateQuality(array($pass));
-		if ($increment == null)
-			$this->assertEquals(0, $pass->quality);
-		else
-			$this->assertEquals($quality + $increment, $pass->quality);
+		$this->assertEquals($expected, $pass->quality);
 	}
 
 }

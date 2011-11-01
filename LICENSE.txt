@@ -1,4 +1,5 @@
-    GildedRose PHP Kata - PHP version of the kata gilded rose (http://code.google.com/p/katagildedrose)
+    GildedRose PHP Kata - PHP version of the 'kata gilded rose' by @AlfredoCasado
+       (http://code.google.com/p/katagildedrose)
     Copyright (C) 2011 - @pepellou
 
     This program is free software: you can redistribute it and/or modify

@@ -2,15 +2,15 @@
 
 require_once 'src/Item.php';
 
+define ('MINIMUM_QUALITY', 0);
+define ('MAXIMUM_QUALITY', 50);
+
 define ('AGED_BRIE',      "Aged Brie");
 define ('BACKSTAGE_PASS', "Backstage passes to a TAFKAL80ETC concert");
 define ('SULFURAS',       "Sulfuras, Hand of Ragnaros");
 define ('CONJURED',       "Conjured Mana Cake");
 
 class ItemGildedRose extends Item {
-
-	const MINIMUM_QUALITY = 0;
-	const MAXIMUM_QUALITY = 50;
 
 	public function is(
 		$type
@@ -21,14 +21,14 @@ class ItemGildedRose extends Item {
 	public function decreaseQuality(
 	) {
 		$this->quality--;
-		if ($this->quality < self::MINIMUM_QUALITY)
+		if ($this->quality < MINIMUM_QUALITY)
 			$this->setMinimumQuality();
 	}
 
 	public function increaseQuality(
 	) {
 		$this->quality++;
-		if ($this->quality > self::MAXIMUM_QUALITY)
+		if ($this->quality > MAXIMUM_QUALITY)
 			$this->setMaximumQuality();
 	}
 
@@ -39,12 +39,12 @@ class ItemGildedRose extends Item {
 
 	public function setMinimumQuality(
 	) {
-		$this->quality = self::MINIMUM_QUALITY;
+		$this->quality = MINIMUM_QUALITY;
 	}
 
 	public function setMaximumQuality(
 	) {
-		$this->quality = self::MAXIMUM_QUALITY;
+		$this->quality = MAXIMUM_QUALITY;
 	}
 
 	public function isExpired(

@@ -41,7 +41,7 @@ class ItemBuilder {
 
 	public function build(
 	) {
-		return new ItemGildedRose(
+		return new Item(
 			$this->name,
 			$this->sellIn,
 			$this->quality

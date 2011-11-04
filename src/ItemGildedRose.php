@@ -101,6 +101,21 @@ class ItemGildedRose {
 		$this->item->setQuality(ItemGildedRose::MAXIMUM_QUALITY);
 	}
 
+	public function isExpired(
+	) {
+		return $this->item->getSellIn() < 0;
+	}
+
+	public function isCloseToExpire(
+	) {
+		return $this->item->getSellIn() <= 10;
+	}
+
+	public function isVeryCloseToExpire(
+	) {
+		return $this->item->getSellIn() <= 5;
+	}
+
 }
 
 ?>

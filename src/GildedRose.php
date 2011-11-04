@@ -18,10 +18,10 @@ class GildedRose {
 			} else {
 				$item->increaseQuality();
 				if ($item->isBackstagePass()) {
-					if ($item->getSellIn() < 11) {
+					if ($item->isCloseToExpire()) {
 						$item->increaseQuality();
 					}
-					if ($item->getSellIn() < 6) {
+					if ($item->isVeryCloseToExpire()) {
 						$item->increaseQuality();
 					}
 				}
@@ -31,7 +31,7 @@ class GildedRose {
 				$item->decreaseSellIn();
 			}
 
-			if ($item->getSellIn() < 0) {
+			if ($item->isExpired()) {
 				if (!$item->isAgedBrie()) {
 					if (!$item->isBackstagePass()) {
 						if (!$item->isSulfuras()) {

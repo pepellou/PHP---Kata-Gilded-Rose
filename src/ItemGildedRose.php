@@ -6,6 +6,10 @@ class ItemGildedRose {
 
 	private $item;
 
+	const AGED_BRIE = "Aged Brie";
+	const BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+	const SULFURAS = "Sulfuras, Hand of Ragnaros";
+
 	public function __construct(
 		$item
 	) {
@@ -41,17 +45,17 @@ class ItemGildedRose {
 
 	public function isAgedBrie(
 	) {
-		return "Aged Brie" == $this->item->getName();
+		return $this->item->getName() == ItemGildedRose::AGED_BRIE;
 	}
 
 	public function isBackstagePass(
 	) {
-		return "Backstage passes to a TAFKAL80ETC concert" == $this->item->getName();
+		return $this->item->getName() == ItemGildedRose::BACKSTAGE_PASSES;
 	}
 
 	public function isSulfuras(
 	) {
-		return "Sulfuras, Hand of Ragnaros" == $this->item->getName();
+		return $this->item->getName() == ItemGildedRose::SULFURAS;
 	}
 
 }

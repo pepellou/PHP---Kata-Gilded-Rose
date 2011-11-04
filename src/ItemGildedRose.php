@@ -69,16 +69,17 @@ class ItemGildedRose extends Item {
 
 	public function getUpdater(
 	) {
-		if ($this->is(AGED_BRIE)) {
-			return new AgedBrieUpdater();
-		} else if ($this->is(BACKSTAGE_PASS)) {
-			return new BackstagePassUpdater();
-		} else if ($this->is(SULFURAS)) {
-			return new SulfurasUpdater();
-		} else if ($this->is(CONJURED)) {
-			return new ConjuredUpdater();
-		} else {
-			return new ItemUpdater();
+		switch ($this->name) {
+			case AGED_BRIE:
+				return new AgedBrieUpdater();
+			case BACKSTAGE_PASS:
+				return new BackstagePassUpdater();
+			case SULFURAS:
+				return new SulfurasUpdater();
+			case CONJURED:
+				return new ConjuredUpdater();
+			default: 
+				return new ItemUpdater();
 		}
 	}
 

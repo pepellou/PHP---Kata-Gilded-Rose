@@ -1,6 +1,11 @@
 <?php
 
 require_once 'src/Item.php';
+require_once 'src/ItemUpdater.php';
+require_once 'src/AgedBrieUpdater.php';
+require_once 'src/BackstagePassUpdater.php';
+require_once 'src/ConjuredUpdater.php';
+require_once 'src/SulfurasUpdater.php';
 
 define ('MINIMUM_QUALITY', 0);
 define ('MAXIMUM_QUALITY', 50);
@@ -60,6 +65,31 @@ class ItemGildedRose extends Item {
 	public function isVeryCloseToExpire(
 	) {
 		return $this->sellIn < 5;
+	}
+
+	public function getUpdater(
+	) {
+		if ($this->is(AGED_BRIE)) {
+			return new AgedBrieUpdater();
+		} else if ($this->is(BACKSTAGE_PASS)) {
+			return new BackstagePassUpdater();
+		} else if ($this->is(SULFURAS)) {
+			return new SulfurasUpdater();
+		} else if ($this->is(CONJURED)) {
+			return new ConjuredUpdater();
+		} else {
+			return new ItemUpdater();
+		}
+	}
+
+	public function updateSellIn(
+	) {
+		$this->getUpdater()->updateSellIn($this);
+	}
+
+	public function updateQuality(
+	) {
+		$this->getUpdater()->updateQuality($this);
 	}
 
 }

@@ -13,7 +13,7 @@ class GildedRose {
 		$items
 	) {
 		for ($i = 0; $i < count($items); $i++) {
-			$item = new ItemGildedRose($items[$i]);
+			$item = $items[$i];
 
 			if ($item->isAgedBrie()) {
 				$updater = new AgedBrieUpdater();

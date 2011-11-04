@@ -58,6 +58,24 @@ class ItemGildedRose {
 		return $this->item->getName() == ItemGildedRose::SULFURAS;
 	}
 
+	public function decreaseQuality(
+	) {
+		
+		$this->item->setQuality($this->item->getQuality() - 1);
+	}
+
+	public function increaseQuality(
+	) {
+		
+		$this->item->setQuality($this->item->getQuality() + 1);
+	}
+
+	public function decreaseSellIn(
+	) {
+		
+		$this->item->setSellIn($this->item->getSellIn() - 1);
+	}
+
 }
 
 ?>

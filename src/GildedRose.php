@@ -12,7 +12,7 @@ class GildedRose {
 			if (!$item->isAgedBrie() && !$item->isBackstagePass()) {
 				if ($item->getQuality() > 0) {
 					if (!$item->isSulfuras()) {
-						$item->setQuality($item->getQuality() - 1);
+						$item->decreaseQuality();
 					}
 				}
 			} else {
@@ -21,12 +21,12 @@ class GildedRose {
 					if ($item->isBackstagePass()) {
 						if ($item->getSellIn() < 11) {
 							if ($item->getQuality() < 50) {
-								$item->setQuality($item->getQuality() + 1);
+								$item->increaseQuality();
 							}
 						}
 						if ($item->getSellIn() < 6) {
 							if ($item->getQuality() < 50) {
-								$item->setQuality($item->getQuality() + 1);
+								$item->increaseQuality();
 							}
 						}
 					}
@@ -34,7 +34,7 @@ class GildedRose {
 			}
 
 			if (!$item->isSulfuras()) {
-				$item->setSellIn($item->getSellIn() - 1);
+				$item->decreaseSellIn();
 			}
 
 			if ($item->getSellIn() < 0) {
@@ -42,15 +42,15 @@ class GildedRose {
 					if (!$item->isBackstagePass()) {
 						if ($item->getQuality() > 0) {
 							if (!$item->isSulfuras()) {
-								$item->setQuality($item->getQuality() - 1);
+								$item->decreaseQuality();
 							}
 						}
 					} else {
-						$item->setQuality($item->getQuality() - $item->getQuality());
+						$item->setQuality(0);
 					}
 				} else {
 					if ($item->getQuality() < 50) {
-						$item->setQuality($item->getQuality() + 1);
+						$item->increaseQuality();
 					}
 				}
 			}

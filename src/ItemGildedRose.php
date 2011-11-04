@@ -17,12 +17,6 @@ define ('CONJURED',       "Conjured Mana Cake");
 
 class ItemGildedRose extends Item {
 
-	public function is(
-		$type
-	) {
-		return $this->getName() == $type;
-	}
-
 	public function decreaseQuality(
 	) {
 		$this->quality--;

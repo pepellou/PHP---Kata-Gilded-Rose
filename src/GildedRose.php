@@ -1,6 +1,7 @@
 <?php
 
 require_once 'src/ItemGildedRose.php';
+require_once 'src/ItemUpdater.php';
 
 class GildedRose {
 
@@ -8,7 +9,8 @@ class GildedRose {
 		$item
 	) {
 		if (!$item->isSulfuras()) {
-			$item->decreaseSellIn();
+			$updater = new ItemUpdater();
+			$updater->updateSellIn($item);
 		}
 	}
 
@@ -40,10 +42,8 @@ class GildedRose {
 				$item->decreaseQuality();
 			}
 		} else {
-			$item->decreaseQuality();
-			if ($item->isExpired()) {
-				$item->decreaseQuality();
-			}
+			$updater = new ItemUpdater();
+			$updater->updateQuality($item);
 		}
 	}
 

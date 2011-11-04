@@ -95,6 +95,27 @@ class GildedRoseTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expected, $pass->quality);
 	}
 
+	public function test_conjured_disminuyen_el_doble_de_rapido(
+	) {
+		$conjured = ItemBuilder::newItem()
+			->withName("Conjured Mana Cake")
+			->withQuality(5)
+			->build();
+		GildedRose::updateQuality(array($conjured));
+		$this->assertEquals(3, $conjured->quality);
+	}
+
+	public function test_conjured_caducado_disminuyen_el_doble_de_rapido(
+	) {
+		$conjured = ItemBuilder::newItem()
+			->withName("Conjured Mana Cake")
+			->withSellIn(0)
+			->withQuality(5)
+			->build();
+		GildedRose::updateQuality(array($conjured));
+		$this->assertEquals(1, $conjured->quality);
+	}
+
 }
 
 ?>

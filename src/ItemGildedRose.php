@@ -9,6 +9,7 @@ class ItemGildedRose {
 	const AGED_BRIE = "Aged Brie";
 	const BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
 	const SULFURAS = "Sulfuras, Hand of Ragnaros";
+	const CONJURED = "Conjured";
 
 	public function __construct(
 		$item
@@ -56,6 +57,16 @@ class ItemGildedRose {
 	public function isSulfuras(
 	) {
 		return $this->item->getName() == ItemGildedRose::SULFURAS;
+	}
+
+	public function isConjured(
+	) {
+		$res = stripos($this->item->getName(), ItemGildedRose::CONJURED);
+		if ($res === false) {
+		        return false;
+		} else {
+		    return true;
+		}
 	}
 
 	public function decreaseQuality(

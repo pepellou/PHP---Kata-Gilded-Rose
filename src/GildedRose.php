@@ -13,6 +13,8 @@ class GildedRose {
 				if ($item->getQuality() > 0) {
 					if (!$item->isSulfuras()) {
 						$item->decreaseQuality();
+						if ($item->isConjured())
+							$item->decreaseQuality();
 					}
 				}
 			} else {
@@ -43,6 +45,9 @@ class GildedRose {
 						if ($item->getQuality() > 0) {
 							if (!$item->isSulfuras()) {
 								$item->decreaseQuality();
+								if ($item->isConjured()) {
+									$item->decreaseQuality();
+								}
 							}
 						}
 					} else {

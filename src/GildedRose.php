@@ -17,6 +17,9 @@ class GildedRose {
 	) {
 		if ($item->isAgedBrie()) {
 			$item->increaseQuality();
+			if ($item->isExpired()) {
+				$item->increaseQuality();
+			}
 		} else if ($item->isBackstagePass()) {
 			$item->increaseQuality();
 			if ($item->isCloseToExpire()) {
@@ -25,24 +28,20 @@ class GildedRose {
 			if ($item->isVeryCloseToExpire()) {
 				$item->increaseQuality();
 			}
+			if ($item->isExpired()) {
+				$item->setMinimumQuality();
+			}
 		} else if ($item->isSulfuras()) {
 		} else if ($item->isConjured()) {
 			$item->decreaseQuality();
 			$item->decreaseQuality();
+			if ($item->isExpired()) {
+				$item->decreaseQuality();
+				$item->decreaseQuality();
+			}
 		} else {
 			$item->decreaseQuality();
-		}
-
-		if ($item->isExpired()) {
-			if ($item->isAgedBrie()) {
-				$item->increaseQuality();
-			} else if ($item->isBackstagePass()) {
-					$item->setMinimumQuality();
-			} else if ($item->isSulfuras()) {
-			} else if ($item->isConjured()) {
-				$item->decreaseQuality();
-				$item->decreaseQuality();
-			} else {
+			if ($item->isExpired()) {
 				$item->decreaseQuality();
 			}
 		}

@@ -51,7 +51,7 @@ class GildedRose {
 							}
 						}
 					} else {
-						$item->setQuality(0);
+						$item->setMinimumQuality();
 					}
 				} else {
 					if ($item->getQuality() < 50) {

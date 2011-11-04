@@ -6,6 +6,9 @@ class ItemGildedRose {
 
 	private $item;
 
+	const MINIMUM_QUALITY = 0;
+	const MAXIMUM_QUALITY = 50;
+
 	const AGED_BRIE = "Aged Brie";
 	const BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
 	const SULFURAS = "Sulfuras, Hand of Ragnaros";
@@ -85,6 +88,16 @@ class ItemGildedRose {
 	) {
 		
 		$this->item->setSellIn($this->item->getSellIn() - 1);
+	}
+
+	public function setMinimumQuality(
+	) {
+		$this->item->setQuality(ItemGildedRose::MINIMUM_QUALITY);
+	}
+
+	public function setMaximumQuality(
+	) {
+		$this->item->setQuality(ItemGildedRose::MAXIMUM_QUALITY);
 	}
 
 }

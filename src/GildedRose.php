@@ -1,6 +1,6 @@
 <?php
 
-require_once 'src/Item.php';
+require_once 'src/ItemGildedRose.php';
 
 class GildedRose {
 
@@ -26,7 +26,7 @@ class GildedRose {
 		$items
 	) {
 		for ($i = 0; $i < count($items); $i++) {
-			$item = $items[$i];
+			$item = new ItemGildedRose($items[$i]);
 			if (!self::isAgedBrie($item) && !self::isBackstagePass($item)) {
 				if ($item->getQuality() > 0) {
 					if (!self::isSulfuras($item)) {

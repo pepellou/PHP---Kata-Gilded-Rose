@@ -9,13 +9,7 @@ class GildedRose {
 	) {
 		for ($i = 0; $i < count($items); $i++) {
 			$item = new ItemGildedRose($items[$i]);
-			if (!$item->isAgedBrie() && !$item->isBackstagePass()) {
-				if (!$item->isSulfuras()) {
-					$item->decreaseQuality();
-					if ($item->isConjured())
-						$item->decreaseQuality();
-				}
-			} else {
+			if ($item->isAgedBrie() || $item->isBackstagePass()) {
 				$item->increaseQuality();
 				if ($item->isBackstagePass()) {
 					if ($item->isCloseToExpire()) {
@@ -25,6 +19,12 @@ class GildedRose {
 						$item->increaseQuality();
 					}
 				}
+			} else {
+				if (!$item->isSulfuras()) {
+					$item->decreaseQuality();
+					if ($item->isConjured())
+						$item->decreaseQuality();
+				}
 			}
 
 			if (!$item->isSulfuras()) {
@@ -32,19 +32,19 @@ class GildedRose {
 			}
 
 			if ($item->isExpired()) {
-				if (!$item->isAgedBrie()) {
-					if (!$item->isBackstagePass()) {
+				if ($item->isAgedBrie()) {
+					$item->increaseQuality();
+				} else {
+					if ($item->isBackstagePass()) {
+						$item->setMinimumQuality();
+					} else {
 						if (!$item->isSulfuras()) {
 							$item->decreaseQuality();
 							if ($item->isConjured()) {
 								$item->decreaseQuality();
 							}
 						}
-					} else {
-						$item->setMinimumQuality();
 					}
-				} else {
-					$item->increaseQuality();
 				}
 			}
 		}

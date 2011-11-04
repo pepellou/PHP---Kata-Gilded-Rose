@@ -39,6 +39,21 @@ class ItemGildedRose {
 		return $this->item->setSellIn($sellIn);
 	}
 
+	public function isAgedBrie(
+	) {
+		return "Aged Brie" == $this->item->getName();
+	}
+
+	public function isBackstagePass(
+	) {
+		return "Backstage passes to a TAFKAL80ETC concert" == $this->item->getName();
+	}
+
+	public function isSulfuras(
+	) {
+		return "Sulfuras, Hand of Ragnaros" == $this->item->getName();
+	}
+
 }
 
 ?>

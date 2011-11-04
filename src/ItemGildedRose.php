@@ -49,71 +49,66 @@ class ItemGildedRose {
 
 	public function isAgedBrie(
 	) {
-		return $this->item->getName() == ItemGildedRose::AGED_BRIE;
+		return $this->getName() == self::AGED_BRIE;
 	}
 
 	public function isBackstagePass(
 	) {
-		return $this->item->getName() == ItemGildedRose::BACKSTAGE_PASSES;
+		return $this->getName() == self::BACKSTAGE_PASSES;
 	}
 
 	public function isSulfuras(
 	) {
-		return $this->item->getName() == ItemGildedRose::SULFURAS;
+		return $this->getName() == self::SULFURAS;
 	}
 
 	public function isConjured(
 	) {
-		$res = stripos($this->item->getName(), ItemGildedRose::CONJURED);
-		if ($res === false) {
-		        return false;
-		} else {
-		    return true;
-		}
+		return stripos($this->getName(), self::CONJURED) !== false;
 	}
 
 	public function decreaseQuality(
 	) {
-		$this->item->setQuality($this->item->getQuality() - 1);
-		if ($this->item->quality < ItemGildedRose::MINIMUM_QUALITY)
+		$this->setQuality($this->getQuality() - 1);
+		if ($this->getQuality() < self::MINIMUM_QUALITY)
 			$this->setMinimumQuality();
 	}
 
 	public function increaseQuality(
 	) {
-		$this->item->setQuality($this->item->getQuality() + 1);
-		if ($this->item->quality > ItemGildedRose::MAXIMUM_QUALITY)
+		$this->setQuality($this->getQuality() + 1);
+		if ($this->getQuality() > self::MAXIMUM_QUALITY)
 			$this->setMaximumQuality();
 	}
 
 	public function decreaseSellIn(
 	) {
-		$this->item->setSellIn($this->item->getSellIn() - 1);
+		$this->setSellIn($this->getSellIn() - 1);
 	}
 
 	public function setMinimumQuality(
 	) {
-		$this->item->setQuality(ItemGildedRose::MINIMUM_QUALITY);
+		$this->setQuality(self::MINIMUM_QUALITY);
 	}
 
 	public function setMaximumQuality(
 	) {
-		$this->item->setQuality(ItemGildedRose::MAXIMUM_QUALITY);
+		$this->setQuality(self::MAXIMUM_QUALITY);
 	}
 
 	public function isExpired(
 	) {
-		return $this->item->getSellIn() < 0;
+		return $this->getSellIn() < 0;
 	}
 
 	public function isCloseToExpire(
 	) {
-		return $this->item->getSellIn() < 10;
+		return $this->getSellIn() < 10;
 	}
 
 	public function isVeryCloseToExpire(
 	) {
-		return $this->item->getSellIn() < 5;
+		return $this->getSellIn() < 5;
 	}
 
 }

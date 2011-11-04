@@ -69,18 +69,15 @@ class ItemGildedRose extends Item {
 
 	public function getUpdater(
 	) {
-		switch ($this->name) {
-			case AGED_BRIE:
-				return new AgedBrieUpdater();
-			case BACKSTAGE_PASS:
-				return new BackstagePassUpdater();
-			case SULFURAS:
-				return new SulfurasUpdater();
-			case CONJURED:
-				return new ConjuredUpdater();
-			default: 
-				return new ItemUpdater();
-		}
+		$updaters = array(
+			AGED_BRIE => new AgedBrieUpdater(),
+			BACKSTAGE_PASS => new BackstagePassUpdater(),
+			SULFURAS => new SulfurasUpdater(),
+			CONJURED => new ConjuredUpdater()
+		);
+		return (array_key_exists($this->name, $updaters))
+			? $updaters[$this->name]
+			: new ItemUpdater();
 	}
 
 	public function updateSellIn(

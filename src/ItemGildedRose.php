@@ -2,35 +2,20 @@
 
 require_once 'src/Item.php';
 
-define ('AGED_BRIE',        "Aged Brie");
-define ('BACKSTAGE_PASSES', "Backstage passes to a TAFKAL80ETC concert");
-define ('SULFURAS',         "Sulfuras, Hand of Ragnaros");
-define ('CONJURED',         "Conjured Mana Cake");
+define ('AGED_BRIE',      "Aged Brie");
+define ('BACKSTAGE_PASS', "Backstage passes to a TAFKAL80ETC concert");
+define ('SULFURAS',       "Sulfuras, Hand of Ragnaros");
+define ('CONJURED',       "Conjured Mana Cake");
 
 class ItemGildedRose extends Item {
 
 	const MINIMUM_QUALITY = 0;
 	const MAXIMUM_QUALITY = 50;
 
-
-	public function isAgedBrie(
+	public function is(
+		$type
 	) {
-		return $this->getName() == AGED_BRIE;
-	}
-
-	public function isBackstagePass(
-	) {
-		return $this->getName() == BACKSTAGE_PASSES;
-	}
-
-	public function isSulfuras(
-	) {
-		return $this->getName() == SULFURAS;
-	}
-
-	public function isConjured(
-	) {
-		return $this->getName() == CONJURED;
+		return $this->getName() == $type;
 	}
 
 	public function decreaseQuality(

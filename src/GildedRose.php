@@ -15,13 +15,13 @@ class GildedRose {
 		for ($i = 0; $i < count($items); $i++) {
 			$item = $items[$i];
 
-			if ($item->isAgedBrie()) {
+			if ($item->is(AGED_BRIE)) {
 				$updater = new AgedBrieUpdater();
-			} else if ($item->isBackstagePass()) {
+			} else if ($item->is(BACKSTAGE_PASS)) {
 				$updater = new BackstagePassUpdater();
-			} else if ($item->isSulfuras()) {
+			} else if ($item->is(SULFURAS)) {
 				$updater = new SulfurasUpdater();
-			} else if ($item->isConjured()) {
+			} else if ($item->is(CONJURED)) {
 				$updater = new ConjuredUpdater();
 			} else {
 				$updater = new ItemUpdater();

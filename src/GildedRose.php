@@ -9,6 +9,11 @@ class GildedRose {
 	) {
 		for ($i = 0; $i < count($items); $i++) {
 			$item = new ItemGildedRose($items[$i]);
+
+			if (!$item->isSulfuras()) {
+				$item->decreaseSellIn();
+			}
+
 			if ($item->isAgedBrie()) {
 				$item->increaseQuality();
 			} else if ($item->isBackstagePass()) {
@@ -25,10 +30,6 @@ class GildedRose {
 				$item->decreaseQuality();
 			} else {
 				$item->decreaseQuality();
-			}
-
-			if (!$item->isSulfuras()) {
-				$item->decreaseSellIn();
 			}
 
 			if ($item->isExpired()) {

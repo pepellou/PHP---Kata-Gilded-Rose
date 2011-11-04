@@ -108,12 +108,12 @@ class ItemGildedRose {
 
 	public function isCloseToExpire(
 	) {
-		return $this->item->getSellIn() <= 10;
+		return $this->item->getSellIn() < 10;
 	}
 
 	public function isVeryCloseToExpire(
 	) {
-		return $this->item->getSellIn() <= 5;
+		return $this->item->getSellIn() < 5;
 	}
 
 }

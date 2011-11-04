@@ -74,19 +74,20 @@ class ItemGildedRose {
 
 	public function decreaseQuality(
 	) {
-		
 		$this->item->setQuality($this->item->getQuality() - 1);
+		if ($this->item->quality < ItemGildedRose::MINIMUM_QUALITY)
+			$this->setMinimumQuality();
 	}
 
 	public function increaseQuality(
 	) {
-		
 		$this->item->setQuality($this->item->getQuality() + 1);
+		if ($this->item->quality > ItemGildedRose::MAXIMUM_QUALITY)
+			$this->setMaximumQuality();
 	}
 
 	public function decreaseSellIn(
 	) {
-		
 		$this->item->setSellIn($this->item->getSellIn() - 1);
 	}
 

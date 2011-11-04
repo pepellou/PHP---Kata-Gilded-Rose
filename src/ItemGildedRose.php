@@ -10,7 +10,7 @@ class ItemGildedRose extends Item {
 	const AGED_BRIE = "Aged Brie";
 	const BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
 	const SULFURAS = "Sulfuras, Hand of Ragnaros";
-	const CONJURED = "Conjured";
+	const CONJURED = "Conjured Mana Cake";
 
 	public function isAgedBrie(
 	) {
@@ -29,7 +29,7 @@ class ItemGildedRose extends Item {
 
 	public function isConjured(
 	) {
-		return stripos($this->getName(), self::CONJURED) !== false;
+		return $this->getName() == self::CONJURED;
 	}
 
 	public function decreaseQuality(
